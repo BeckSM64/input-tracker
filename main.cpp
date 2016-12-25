@@ -15,7 +15,7 @@ using namespace std;
 int main(){
 
     //Create the window
-    sf::RenderWindow win(sf::VideoMode(500, 420), "Input Tracker");
+    sf::RenderWindow win(sf::VideoMode(900, 560), "Input Tracker");
 
     //Create text for keys
     sf::Text wText;
@@ -77,6 +77,24 @@ int main(){
     leftKey.setFillColor(sf::Color::Blue);
     leftKey.setPosition(90, 210);
 
+    //Space bar
+    sf::RectangleShape spaceBar(sf::Vector2f(500, 100));
+    spaceBar.setFillColor(sf::Color::Blue);
+    spaceBar.setPosition(200, 370);
+
+    //Mouse
+    sf::RectangleShape mouseBox(sf::Vector2f(200, 250));
+    mouseBox.setFillColor(sf::Color::Blue);
+    mouseBox.setPosition(600, 60);
+
+    sf::RectangleShape mouseLeft(sf::Vector2f(80, 100));
+    mouseLeft.setFillColor(sf::Color::Blue);
+    mouseLeft.setPosition(610, 70);
+
+    sf::RectangleShape mouseRight(sf::Vector2f(80, 100));
+    mouseRight.setFillColor(sf::Color::Blue);
+    mouseRight.setPosition(710, 70);
+
     while(win.isOpen()){
 
         sf::Event event;
@@ -116,6 +134,25 @@ int main(){
             leftKey.setFillColor(sf::Color::Blue);
             aText.setColor(sf::Color::White);
         }
+        if(GetAsyncKeyState(VK_SPACE)){
+            spaceBar.setFillColor(sf::Color::White);
+        }else{
+            spaceBar.setFillColor(sf::Color::Blue);
+        }
+        if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+            mouseLeft.setFillColor(sf::Color::White);
+        }
+        else{
+            mouseLeft.setFillColor(sf::Color::Blue);
+        }
+        if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
+            mouseRight.setFillColor(sf::Color::White);
+        }
+        else{
+            mouseRight.setFillColor(sf::Color::Blue);
+        }
+
+
 
         //Draw everything to the window
         win.clear();
@@ -127,6 +164,10 @@ int main(){
         win.draw(sText);
         win.draw(dText);
         win.draw(aText);
+        win.draw(spaceBar);
+        win.draw(mouseBox);
+        win.draw(mouseLeft);
+        win.draw(mouseRight);
         win.display();//Show it
     }
 
