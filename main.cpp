@@ -15,13 +15,15 @@ using namespace std;
 int main(){
 
     //Create the window
-    sf::RenderWindow win(sf::VideoMode(900, 560), "Input Tracker");
+    sf::RenderWindow win(sf::VideoMode(720, 520), "Input Tracker");
 
     //Create text for keys
     sf::Text wText;
     sf::Text sText;
     sf::Text aText;
     sf::Text dText;
+    sf::Text spaceText;
+    sf::Text shiftText;
 
     //Load font
     sf::Font font;
@@ -34,6 +36,8 @@ int main(){
     sText.setFont(font);
     dText.setFont(font);
     aText.setFont(font);
+    spaceText.setFont(font);
+    shiftText.setFont(font);
 
     //Create texts
     wText.setString("W");
@@ -55,6 +59,16 @@ int main(){
     aText.setCharacterSize(50);
     aText.setColor(sf::Color::White);
     aText.setPosition(125, 229);
+
+    spaceText.setString("SPACE");
+    spaceText.setCharacterSize(50);
+    spaceText.setColor(sf::Color::White);
+    spaceText.setPosition(385, 340);
+
+    shiftText.setString("SHIFT");
+    shiftText.setCharacterSize(50);
+    shiftText.setColor(sf::Color::White);
+    shiftText.setPosition(125, 340);
 
     //Create the arrow keys, which are represented by rectangles
     //Up key
@@ -78,22 +92,27 @@ int main(){
     leftKey.setPosition(90, 210);
 
     //Space bar
-    sf::RectangleShape spaceBar(sf::Vector2f(500, 100));
+    sf::RectangleShape spaceBar(sf::Vector2f(320, 100));
     spaceBar.setFillColor(sf::Color::Blue);
-    spaceBar.setPosition(200, 370);
+    spaceBar.setPosition(310, 320);
+
+    //Shift key
+    sf::RectangleShape shiftKey(sf::Vector2f(210, 100));
+    shiftKey.setFillColor(sf::Color::Blue);
+    shiftKey.setPosition(90, 320);
 
     //Mouse
-    sf::RectangleShape mouseBox(sf::Vector2f(200, 250));
+    sf::RectangleShape mouseBox(sf::Vector2f(210, 210));
     mouseBox.setFillColor(sf::Color::Blue);
-    mouseBox.setPosition(600, 60);
+    mouseBox.setPosition(420, 100);
 
-    sf::RectangleShape mouseLeft(sf::Vector2f(80, 100));
+    sf::RectangleShape mouseLeft(sf::Vector2f(90, 90));
     mouseLeft.setFillColor(sf::Color::Blue);
-    mouseLeft.setPosition(610, 70);
+    mouseLeft.setPosition(430, 110);
 
-    sf::RectangleShape mouseRight(sf::Vector2f(80, 100));
+    sf::RectangleShape mouseRight(sf::Vector2f(90, 90));
     mouseRight.setFillColor(sf::Color::Blue);
-    mouseRight.setPosition(710, 70);
+    mouseRight.setPosition(530, 110);
 
     while(win.isOpen()){
 
@@ -136,8 +155,17 @@ int main(){
         }
         if(GetAsyncKeyState(VK_SPACE)){
             spaceBar.setFillColor(sf::Color::White);
+            spaceText.setColor(sf::Color::Blue);
         }else{
             spaceBar.setFillColor(sf::Color::Blue);
+            spaceText.setColor(sf::Color::White);
+        }
+        if(GetAsyncKeyState(VK_SHIFT)){
+            shiftKey.setFillColor(sf::Color::White);
+            shiftText.setColor(sf::Color::Blue);
+        }else{
+            shiftKey.setFillColor(sf::Color::Blue);
+            shiftText.setColor(sf::Color::White);
         }
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
             mouseLeft.setFillColor(sf::Color::White);
@@ -152,19 +180,20 @@ int main(){
             mouseRight.setFillColor(sf::Color::Blue);
         }
 
-
-
         //Draw everything to the window
         win.clear();
         win.draw(upKey);
         win.draw(downKey);
         win.draw(rightKey);
         win.draw(leftKey);
+        win.draw(spaceBar);
+        win.draw(shiftKey);
         win.draw(wText);
         win.draw(sText);
         win.draw(dText);
         win.draw(aText);
-        win.draw(spaceBar);
+        win.draw(spaceText);
+        win.draw(shiftText);
         win.draw(mouseBox);
         win.draw(mouseLeft);
         win.draw(mouseRight);
