@@ -10,8 +10,6 @@
 #include <SFML/Graphics.hpp>
 #include <windows.h>
 
-using namespace std;
-
 int main(){
 
     //Create the window
@@ -25,10 +23,10 @@ int main(){
     sf::Text spaceText;
     sf::Text shiftText;
 
-    //Load font
+    //Load font with path relative to output directory of generated executable
     sf::Font font;
-    if(!font.loadFromFile("fonts/arial.ttf")){
-        cout << "Error loading font" << endl;
+    if(!font.loadFromFile("./fonts/arial.ttf")){
+        std::cout << "Error loading font" << std::endl;
     }
 
     //Set fonts

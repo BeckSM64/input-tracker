@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.25)
 project(tracker LANGUAGES CXX)
 
+# Set output directory for executable
+set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../output/ )
+
+# Build static libraries for SFML to link
 set(BUILD_SHARED_LIBS OFF)
 set(CMAKE_BUILD_TYPE DEBUG)
 set(SFML_STATIC_LIBRARIES TRUE)
@@ -10,9 +14,15 @@ FetchContent_Declare(SFML
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
+# Add executable
 add_executable(tracker src/main.cpp)
+
+# Link SFML static libs
 target_link_libraries(tracker PRIVATE sfml-system sfml-graphics sfml-window)
 target_compile_features(tracker PRIVATE cxx_std_17)
 target_link_libraries(tracker ${SFML_LIBRARIES} ${SFML_DEPEDENCIES})
+
+# Copy resources into output directory
+file(COPY fonts/ DESTINATION "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fonts/")
 
 install(TARGETS tracker)
