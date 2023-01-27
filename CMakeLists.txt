@@ -14,8 +14,9 @@ FetchContent_Declare(SFML
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
-# Add executable
-add_executable(tracker src/main.cpp)
+include_directories(includes/)
+file(GLOB SOURCES "src/*.cpp")
+add_executable(tracker ${SOURCES})
 
 # Link SFML static libs
 target_link_libraries(tracker PRIVATE sfml-system sfml-graphics sfml-window)
