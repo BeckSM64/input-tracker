@@ -1,5 +1,5 @@
 # Input Tracker
-This project is intended to track keyboard events visually for pc gamers
+This project is intended to track keyboard events visually for PC gamers. It is meant to be used as an overlay in OBS or any other broadcast software to display input on screen during gameplay streams/recordings. The project is written in C++ and uses SFML for graphics.
 
 # Building and Running the Project
 ## Windows
