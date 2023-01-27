@@ -23,3 +23,6 @@ Then you can run the executable
 ```bash
 ./tracker
 ```
+
+The running application should look like this
+![alt text](https://raw.githubusercontent.com/BeckSM64/input-tracker/master/images/tracker-screenshot.png)
