@@ -21,9 +21,11 @@ class Tracker {
 
         // Text
         sf::Text wText;
-        sf::Text sText;
         sf::Text aText;
+        sf::Text sText;
         sf::Text dText;
+        sf::Text qText;
+        sf::Text eText;
         sf::Text spaceText;
         sf::Text shiftText;
 
@@ -32,6 +34,8 @@ class Tracker {
         sf::RectangleShape downKey;
         sf::RectangleShape rightKey;
         sf::RectangleShape leftKey;
+        sf::RectangleShape qKey;
+        sf::RectangleShape eKey;
         sf::RectangleShape spaceBar;
         sf::RectangleShape shiftKey;
         sf::RectangleShape mouseBox;
