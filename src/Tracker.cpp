@@ -12,8 +12,33 @@ Tracker::Tracker() {
 
 void Tracker::Setup() {
 
+    // Window size constants
+    const int WINDOW_WIDTH = 720;
+    const int WINDOW_HEIGHT = 520;
+
+    // Key text size constant
+    const int KEY_TEXT_SIZE = 50;
+
+    // Key size constants
+    const sf::Vector2f LETTER_KEY_SIZE = sf::Vector2f(100, 100);
+    const sf::Vector2f SPACE_KEY_SIZE = sf::Vector2f(320, 100);
+    const sf::Vector2f SHIFT_KEY_SIZE = sf::Vector2f(210, 100);
+    const sf::Vector2f MOUSE_BOX_SIZE = sf::Vector2f(210, 210);
+    const sf::Vector2f MOUSE_KEY_SIZE = sf::Vector2f(90, 90);
+
+    // Key position constants
+    const sf::Vector2f W_KEY_POSITION = sf::Vector2f(200, 100);
+    const sf::Vector2f A_KEY_POSITION = sf::Vector2f(90, 210);
+    const sf::Vector2f S_KEY_POSITION = sf::Vector2f(200, 210);
+    const sf::Vector2f D_KEY_POSITION = sf::Vector2f(310, 210);
+    const sf::Vector2f SHIFT_KEY_POSITION = sf::Vector2f(90, 320);
+    const sf::Vector2f SPACE_KEY_POSITION = sf::Vector2f(310, 320);
+    const sf::Vector2f MOUSE_BOX_POSITION = sf::Vector2f(420, 100);
+    const sf::Vector2f LEFT_MOUSE_KEY_POSITION = sf::Vector2f(430, 110);
+    const sf::Vector2f RIGHT_MOUSE_KEY_POSITION = sf::Vector2f(530, 110);
+
     // Create the window
-    Tracker::win.create(sf::VideoMode(720, 520), "Input Tracker");
+    Tracker::win.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Input Tracker");
 
     // Load font with path relative to output directory of generated executable
     if(!Tracker::font.loadFromFile("./fonts/arial.ttf")){
@@ -30,77 +55,77 @@ void Tracker::Setup() {
 
     //Create texts
     Tracker::wText.setString("W");
-    Tracker::wText.setCharacterSize(50);
+    Tracker::wText.setCharacterSize(KEY_TEXT_SIZE);
     Tracker::wText.setColor(sf::Color::White);
     Tracker::wText.setPosition(227, 119);
 
     Tracker::sText.setString("S");
-    Tracker::sText.setCharacterSize(50);
+    Tracker::sText.setCharacterSize(KEY_TEXT_SIZE);
     Tracker::sText.setColor(sf::Color::White);
     Tracker::sText.setPosition(233, 229);
 
     Tracker::dText.setString("D");
-    Tracker::dText.setCharacterSize(50);
+    Tracker::dText.setCharacterSize(KEY_TEXT_SIZE);
     Tracker::dText.setColor(sf::Color::White);
     Tracker::dText.setPosition(343, 229);
 
     Tracker::aText.setString("A");
-    Tracker::aText.setCharacterSize(50);
+    Tracker::aText.setCharacterSize(KEY_TEXT_SIZE);
     Tracker::aText.setColor(sf::Color::White);
     Tracker::aText.setPosition(125, 229);
 
     Tracker::spaceText.setString("SPACE");
-    Tracker::spaceText.setCharacterSize(50);
+    Tracker::spaceText.setCharacterSize(KEY_TEXT_SIZE);
     Tracker::spaceText.setColor(sf::Color::White);
     Tracker::spaceText.setPosition(385, 340);
 
     Tracker::shiftText.setString("SHIFT");
-    Tracker::shiftText.setCharacterSize(50);
+    Tracker::shiftText.setCharacterSize(KEY_TEXT_SIZE);
     Tracker::shiftText.setColor(sf::Color::White);
     Tracker::shiftText.setPosition(125, 340);
 
     // Create the keys and set colors and positions
-    Tracker::upKey = sf::RectangleShape(sf::Vector2f(100, 100));
+    Tracker::upKey = sf::RectangleShape(LETTER_KEY_SIZE);
     Tracker::upKey.setFillColor(sf::Color::Blue);
-    Tracker::upKey.setPosition(200, 100);
+    Tracker::upKey.setPosition(W_KEY_POSITION);
 
     // Down key
-    Tracker::downKey = sf::RectangleShape(sf::Vector2f(100, 100));
+    Tracker::downKey = sf::RectangleShape(LETTER_KEY_SIZE);
     Tracker::downKey.setFillColor(sf::Color::Blue);
-    Tracker::downKey.setPosition(200, 210);
+    Tracker::downKey.setPosition(S_KEY_POSITION);
 
     // Right key
-    Tracker::rightKey = sf::RectangleShape(sf::Vector2f(100, 100));
+    Tracker::rightKey = sf::RectangleShape(LETTER_KEY_SIZE);
     Tracker::rightKey.setFillColor(sf::Color::Blue);
-    Tracker::rightKey.setPosition(310, 210);
+    Tracker::rightKey.setPosition(D_KEY_POSITION);
 
     // Left key
-    Tracker::leftKey = sf::RectangleShape(sf::Vector2f(100, 100));
+    Tracker::leftKey = sf::RectangleShape(LETTER_KEY_SIZE);
     Tracker::leftKey.setFillColor(sf::Color::Blue);
-    Tracker::leftKey.setPosition(90, 210);
+    Tracker::leftKey.setPosition(A_KEY_POSITION);
 
     // Space bar
-    Tracker::spaceBar = sf::RectangleShape(sf::Vector2f(320, 100));
+    Tracker::spaceBar = sf::RectangleShape(SPACE_KEY_SIZE);
     Tracker::spaceBar.setFillColor(sf::Color::Blue);
-    Tracker::spaceBar.setPosition(310, 320);
+    Tracker::spaceBar.setPosition(SPACE_KEY_POSITION);
 
     // Shift key
-    Tracker::shiftKey = sf::RectangleShape(sf::Vector2f(210, 100));
+    Tracker::shiftKey = sf::RectangleShape(SHIFT_KEY_SIZE);
     Tracker::shiftKey.setFillColor(sf::Color::Blue);
-    Tracker::shiftKey.setPosition(90, 320);
+    Tracker::shiftKey.setPosition(SHIFT_KEY_POSITION);
 
     // Mouse
-    Tracker::mouseBox = sf::RectangleShape(sf::Vector2f(210, 210));
+    Tracker::mouseBox = sf::RectangleShape(MOUSE_BOX_SIZE);
     Tracker::mouseBox.setFillColor(sf::Color::Blue);
-    Tracker::mouseBox.setPosition(420, 100);
+    Tracker::mouseBox.setPosition(MOUSE_BOX_POSITION);
 
-    Tracker::mouseLeft = sf::RectangleShape(sf::Vector2f(90, 90));
+    Tracker::mouseLeft = sf::RectangleShape(MOUSE_KEY_SIZE);
     Tracker::mouseLeft.setFillColor(sf::Color::Blue);
-    Tracker::mouseLeft.setPosition(430, 110);
+    Tracker::mouseLeft.setPosition(LEFT_MOUSE_KEY_POSITION);
 
-    Tracker::mouseRight = sf::RectangleShape(sf::Vector2f(90, 90));
+    Tracker::mouseRight = sf::RectangleShape(MOUSE_KEY_SIZE);
     Tracker::mouseRight.setFillColor(sf::Color::Blue);
-    Tracker::mouseRight.setPosition(530, 110);
+    Tracker::mouseRight.setPosition(RIGHT_MOUSE_KEY_POSITION);
 }
 
 void Tracker::Run() {
