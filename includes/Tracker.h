@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 
+#include "Key.h"
+
 class Tracker {
 
     public:
@@ -41,4 +43,6 @@ class Tracker {
         sf::RectangleShape mouseBox;
         sf::RectangleShape mouseLeft;
         sf::RectangleShape mouseRight;
+
+        Key testKey;
 };

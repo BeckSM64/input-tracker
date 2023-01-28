@@ -3,9 +3,11 @@
 #include <SFML/Graphics.hpp>
 
 #include "Tracker.h"
+// #include "Key.h" // TODO: PRAGMA ONCE
 
 Tracker::Tracker() {
 
+    Key testKey = Key(sf::Vector2f(100, 100), sf::Vector2f(100, 100), sf::Color(sf::Color::Blue), "P", 50, sf::Vector2f(33, 19), sf::Color::White);
     Tracker::Setup();
     Tracker::Run();
 }
@@ -257,24 +259,25 @@ void Tracker::Draw() {
 
     // Draw everything to window
     Tracker::win.clear();
-    Tracker::win.draw(Tracker::upKey);
-    Tracker::win.draw(Tracker::downKey);
-    Tracker::win.draw(Tracker::rightKey);
-    Tracker::win.draw(Tracker::leftKey);
-    Tracker::win.draw(Tracker::qKey);
-    Tracker::win.draw(Tracker::eKey);
-    Tracker::win.draw(Tracker::spaceBar);
-    Tracker::win.draw(Tracker::shiftKey);
-    Tracker::win.draw(Tracker::wText);
-    Tracker::win.draw(Tracker::sText);
-    Tracker::win.draw(Tracker::dText);
-    Tracker::win.draw(Tracker::aText);
-    Tracker::win.draw(Tracker::qText);
-    Tracker::win.draw(Tracker::eText);
-    Tracker::win.draw(Tracker::spaceText);
-    Tracker::win.draw(Tracker::shiftText);
-    Tracker::win.draw(Tracker::mouseBox);
-    Tracker::win.draw(Tracker::mouseLeft);
-    Tracker::win.draw(Tracker::mouseRight);
+    Tracker::testKey.Draw(Tracker::win);
+    // Tracker::win.draw(Tracker::upKey);
+    // Tracker::win.draw(Tracker::downKey);
+    // Tracker::win.draw(Tracker::rightKey);
+    // Tracker::win.draw(Tracker::leftKey);
+    // Tracker::win.draw(Tracker::qKey);
+    // Tracker::win.draw(Tracker::eKey);
+    // Tracker::win.draw(Tracker::spaceBar);
+    // Tracker::win.draw(Tracker::shiftKey);
+    // Tracker::win.draw(Tracker::wText);
+    // Tracker::win.draw(Tracker::sText);
+    // Tracker::win.draw(Tracker::dText);
+    // Tracker::win.draw(Tracker::aText);
+    // Tracker::win.draw(Tracker::qText);
+    // Tracker::win.draw(Tracker::eText);
+    // Tracker::win.draw(Tracker::spaceText);
+    // Tracker::win.draw(Tracker::shiftText);
+    // Tracker::win.draw(Tracker::mouseBox);
+    // Tracker::win.draw(Tracker::mouseLeft);
+    // Tracker::win.draw(Tracker::mouseRight);
     Tracker::win.display(); // Show it
 }
