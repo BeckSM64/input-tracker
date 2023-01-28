@@ -56,32 +56,32 @@ void Tracker::Setup() {
     //Create texts
     Tracker::wText.setString("W");
     Tracker::wText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::wText.setColor(sf::Color::White);
+    Tracker::wText.setFillColor(sf::Color::White);
     Tracker::wText.setPosition(227, 119);
 
     Tracker::sText.setString("S");
     Tracker::sText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::sText.setColor(sf::Color::White);
+    Tracker::sText.setFillColor(sf::Color::White);
     Tracker::sText.setPosition(233, 229);
 
     Tracker::dText.setString("D");
     Tracker::dText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::dText.setColor(sf::Color::White);
+    Tracker::dText.setFillColor(sf::Color::White);
     Tracker::dText.setPosition(343, 229);
 
     Tracker::aText.setString("A");
     Tracker::aText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::aText.setColor(sf::Color::White);
+    Tracker::aText.setFillColor(sf::Color::White);
     Tracker::aText.setPosition(125, 229);
 
     Tracker::spaceText.setString("SPACE");
     Tracker::spaceText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::spaceText.setColor(sf::Color::White);
+    Tracker::spaceText.setFillColor(sf::Color::White);
     Tracker::spaceText.setPosition(385, 340);
 
     Tracker::shiftText.setString("SHIFT");
     Tracker::shiftText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::shiftText.setColor(sf::Color::White);
+    Tracker::shiftText.setFillColor(sf::Color::White);
     Tracker::shiftText.setPosition(125, 340);
 
     // Create the keys and set colors and positions
@@ -154,50 +154,50 @@ void Tracker::Update() {
     // Check current state of keys
     if(GetAsyncKeyState('W')) {
         Tracker::upKey.setFillColor(sf::Color::White);
-        Tracker::wText.setColor(sf::Color::Blue);
+        Tracker::wText.setFillColor(sf::Color::Blue);
     } else {
         Tracker::upKey.setFillColor(sf::Color::Blue);
-        Tracker::wText.setColor(sf::Color::White);
+        Tracker::wText.setFillColor(sf::Color::White);
     }
 
     if(GetAsyncKeyState('S')) {
         Tracker::downKey.setFillColor(sf::Color::White);
-        Tracker::sText.setColor(sf::Color::Blue);
+        Tracker::sText.setFillColor(sf::Color::Blue);
     } else {
         Tracker::downKey.setFillColor(sf::Color::Blue);
-        Tracker::sText.setColor(sf::Color::White);
+        Tracker::sText.setFillColor(sf::Color::White);
     }
 
     if(GetAsyncKeyState('D')) {
         Tracker::rightKey.setFillColor(sf::Color::White);
-        Tracker::dText.setColor(sf::Color::Blue);
+        Tracker::dText.setFillColor(sf::Color::Blue);
     } else{
         Tracker::rightKey.setFillColor(sf::Color::Blue);
-        Tracker::dText.setColor(sf::Color::White);
+        Tracker::dText.setFillColor(sf::Color::White);
     }
 
     if(GetAsyncKeyState('A')) {
         Tracker::leftKey.setFillColor(sf::Color::White);
-        Tracker::aText.setColor(sf::Color::Blue);
+        Tracker::aText.setFillColor(sf::Color::Blue);
     }else {
         Tracker::leftKey.setFillColor(sf::Color::Blue);
-        Tracker::aText.setColor(sf::Color::White);
+        Tracker::aText.setFillColor(sf::Color::White);
     }
 
     if(GetAsyncKeyState(VK_SPACE)) {
         Tracker::spaceBar.setFillColor(sf::Color::White);
-        Tracker::spaceText.setColor(sf::Color::Blue);
+        Tracker::spaceText.setFillColor(sf::Color::Blue);
     } else {
         Tracker::spaceBar.setFillColor(sf::Color::Blue);
-        Tracker::spaceText.setColor(sf::Color::White);
+        Tracker::spaceText.setFillColor(sf::Color::White);
     }
 
     if(GetAsyncKeyState(VK_SHIFT)) {
         Tracker::shiftKey.setFillColor(sf::Color::White);
-        Tracker::shiftText.setColor(sf::Color::Blue);
+        Tracker::shiftText.setFillColor(sf::Color::Blue);
     } else {
         Tracker::shiftKey.setFillColor(sf::Color::Blue);
-        Tracker::shiftText.setColor(sf::Color::White);
+        Tracker::shiftText.setFillColor(sf::Color::White);
     }
 
     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
