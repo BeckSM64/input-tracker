@@ -22,25 +22,21 @@ Key::Key(const sf::Vector2f KEY_SIZE,
     Key::textColor = textColor;
 
     // Initialize SFML stuff
-    Key::Init(KEY_POSITION, KEY_SIZE, KEY_COLOR);
+    Key::Init();
 
 }
 
-void Key::Init(const sf::Vector2f KEY_POSITION, const sf::Vector2f KEY_SIZE, const sf::Color KEY_COLOR) {
+void Key::Init() {
 
     // Load font with path relative to output directory of generated executable
     if(!Key::font.loadFromFile("./fonts/arial.ttf")){
         std::cout << "Error loading font" << std::endl;
     }
 
-    const int KEY_TEXT_X = (KEY_POSITION.x + (KEY_SIZE.x / 2.0f)) - (Key::keyText.getGlobalBounds().width / 2);
-    const int KEY_TEXT_Y = (KEY_POSITION.y + (KEY_SIZE.y / 2.0f)) - (Key::keyText.getGlobalBounds().height / 2);
-
     // Setup text
     Key::keyText.setString("W");
     Key::keyText.setCharacterSize(50);
     Key::keyText.setFillColor(sf::Color::White);
-    Key::keyText.setPosition(KEY_TEXT_X, KEY_TEXT_Y);
 
     // Setup key
     Key::keyShape = sf::RectangleShape(KEY_SIZE);

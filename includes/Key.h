@@ -16,7 +16,7 @@ class Key {
 
     private:
 
-        void Init(const sf::Vector2f KEY_POSITION, const sf::Vector2f KEY_SIZE, const sf::Color KEY_COLOR);
+        void Init();
 
         // Key font
         sf::Font font;
