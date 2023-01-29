@@ -1,6 +1,5 @@
 #include <iostream>
 #include <windows.h>
-#include <cmath>
 
 #include "Key.h"
 
