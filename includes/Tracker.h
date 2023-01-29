@@ -21,28 +21,16 @@ class Tracker {
         // Font
         sf::Font font;
 
-        // Text
-        sf::Text wText;
-        sf::Text aText;
-        sf::Text sText;
-        sf::Text dText;
-        sf::Text qText;
-        sf::Text eText;
-        sf::Text spaceText;
-        sf::Text shiftText;
-
         // Keys
-        sf::RectangleShape upKey;
-        sf::RectangleShape downKey;
-        sf::RectangleShape rightKey;
-        sf::RectangleShape leftKey;
-        sf::RectangleShape qKey;
-        sf::RectangleShape eKey;
-        sf::RectangleShape spaceBar;
-        sf::RectangleShape shiftKey;
-        sf::RectangleShape mouseBox;
-        sf::RectangleShape mouseLeft;
-        sf::RectangleShape mouseRight;
-
-        Key testKey;
+        Key wKey;
+        Key aKey;
+        Key sKey;
+        Key dKey;
+        Key qKey;
+        Key eKey;
+        Key shiftKey;
+        Key spaceKey;
+        Key mouseBox;
+        Key mouseLeft;
+        Key mouseRight;
 };

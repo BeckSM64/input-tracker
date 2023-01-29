@@ -12,7 +12,8 @@ Key::Key(const sf::Vector2f KEY_SIZE,
          const sf::Color KEY_COLOR,
          const std::string TEXT_STRING,
          const int TEXT_SIZE,
-         sf::Color textColor) {
+         sf::Color textColor,
+         int keyForAsyncCheck) {
 
     Key::KEY_SIZE = KEY_SIZE;
     Key::KEY_POSITION = KEY_POSITION;
@@ -20,6 +21,7 @@ Key::Key(const sf::Vector2f KEY_SIZE,
     Key::TEXT_STRING = TEXT_STRING;
     Key::TEXT_SIZE = TEXT_SIZE;
     Key::textColor = textColor;
+    Key::keyForAsyncCheck = keyForAsyncCheck;
 
     // Initialize SFML stuff
     Key::Init();
@@ -34,7 +36,7 @@ void Key::Init() {
     }
 
     // Setup text
-    Key::keyText.setString("W");
+    Key::keyText.setString(Key::TEXT_STRING);
     Key::keyText.setCharacterSize(50);
     Key::keyText.setFillColor(sf::Color::White);
 
@@ -47,7 +49,7 @@ void Key::Init() {
 void Key::Update() {
 
     // Change key color depending on input
-    if(GetAsyncKeyState('W')) {
+    if(GetAsyncKeyState(Key::keyForAsyncCheck)) {
         Key::keyShape.setFillColor(sf::Color::White);
         Key::keyText.setFillColor(sf::Color::Blue);
     } else {

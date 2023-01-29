@@ -7,7 +7,6 @@
 
 Tracker::Tracker() {
 
-    Key testKey = Key(sf::Vector2f(100, 100), sf::Vector2f(100, 100), sf::Color(sf::Color::Blue), "P", 50, sf::Vector2f(33, 19), sf::Color::White);
     Tracker::Setup();
     Tracker::Run();
 }
@@ -44,114 +43,18 @@ void Tracker::Setup() {
     // Create the window
     Tracker::win.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Input Tracker");
 
-    // Load font with path relative to output directory of generated executable
-    if(!Tracker::font.loadFromFile("./fonts/arial.ttf")){
-        std::cout << "Error loading font" << std::endl;
-    }
-
-    //Set fonts
-    Tracker::wText.setFont(font);
-    Tracker::aText.setFont(font);
-    Tracker::sText.setFont(font);
-    Tracker::dText.setFont(font);
-    Tracker::qText.setFont(font);
-    Tracker::eText.setFont(font);
-    Tracker::spaceText.setFont(font);
-    Tracker::shiftText.setFont(font);
-
-    //Create texts
-    Tracker::wText.setString("W");
-    Tracker::wText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::wText.setFillColor(sf::Color::White);
-    Tracker::wText.setPosition(227, 119);
-
-    Tracker::aText.setString("A");
-    Tracker::aText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::aText.setFillColor(sf::Color::White);
-    Tracker::aText.setPosition(125, 229);
-
-    Tracker::sText.setString("S");
-    Tracker::sText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::sText.setFillColor(sf::Color::White);
-    Tracker::sText.setPosition(233, 229);
-
-    Tracker::dText.setString("D");
-    Tracker::dText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::dText.setFillColor(sf::Color::White);
-    Tracker::dText.setPosition(343, 229);
-
-    Tracker::qText.setString("Q");
-    Tracker::qText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::qText.setFillColor(sf::Color::White);
-    Tracker::qText.setPosition(123, 119);
-
-    Tracker::eText.setString("E");
-    Tracker::eText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::eText.setFillColor(sf::Color::White);
-    Tracker::eText.setPosition(343, 119);
-
-    Tracker::spaceText.setString("SPACE");
-    Tracker::spaceText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::spaceText.setFillColor(sf::Color::White);
-    Tracker::spaceText.setPosition(385, 340);
-
-    Tracker::shiftText.setString("SHIFT");
-    Tracker::shiftText.setCharacterSize(KEY_TEXT_SIZE);
-    Tracker::shiftText.setFillColor(sf::Color::White);
-    Tracker::shiftText.setPosition(125, 340);
-
-    // W Key
-    Tracker::upKey = sf::RectangleShape(LETTER_KEY_SIZE);
-    Tracker::upKey.setFillColor(sf::Color::Blue);
-    Tracker::upKey.setPosition(W_KEY_POSITION);
-
-    // A key
-    Tracker::leftKey = sf::RectangleShape(LETTER_KEY_SIZE);
-    Tracker::leftKey.setFillColor(sf::Color::Blue);
-    Tracker::leftKey.setPosition(A_KEY_POSITION);
-
-    // S key
-    Tracker::downKey = sf::RectangleShape(LETTER_KEY_SIZE);
-    Tracker::downKey.setFillColor(sf::Color::Blue);
-    Tracker::downKey.setPosition(S_KEY_POSITION);
-
-    // D key
-    Tracker::rightKey = sf::RectangleShape(LETTER_KEY_SIZE);
-    Tracker::rightKey.setFillColor(sf::Color::Blue);
-    Tracker::rightKey.setPosition(D_KEY_POSITION);
-
-    // Q Key
-    Tracker::qKey = sf::RectangleShape(LETTER_KEY_SIZE);
-    Tracker::qKey.setFillColor(sf::Color::Blue);
-    Tracker::qKey.setPosition(Q_KEY_POSITION);
-
-    // E Key
-    Tracker::eKey = sf::RectangleShape(LETTER_KEY_SIZE);
-    Tracker::eKey.setFillColor(sf::Color::Blue);
-    Tracker::eKey.setPosition(E_KEY_POSITION);
-
-    // Space bar
-    Tracker::spaceBar = sf::RectangleShape(SPACE_KEY_SIZE);
-    Tracker::spaceBar.setFillColor(sf::Color::Blue);
-    Tracker::spaceBar.setPosition(SPACE_KEY_POSITION);
-
-    // Shift key
-    Tracker::shiftKey = sf::RectangleShape(SHIFT_KEY_SIZE);
-    Tracker::shiftKey.setFillColor(sf::Color::Blue);
-    Tracker::shiftKey.setPosition(SHIFT_KEY_POSITION);
-
-    // Mouse
-    Tracker::mouseBox = sf::RectangleShape(MOUSE_BOX_SIZE);
-    Tracker::mouseBox.setFillColor(sf::Color::Blue);
-    Tracker::mouseBox.setPosition(MOUSE_BOX_POSITION);
-
-    Tracker::mouseLeft = sf::RectangleShape(MOUSE_KEY_SIZE);
-    Tracker::mouseLeft.setFillColor(sf::Color::Blue);
-    Tracker::mouseLeft.setPosition(LEFT_MOUSE_KEY_POSITION);
-
-    Tracker::mouseRight = sf::RectangleShape(MOUSE_KEY_SIZE);
-    Tracker::mouseRight.setFillColor(sf::Color::Blue);
-    Tracker::mouseRight.setPosition(RIGHT_MOUSE_KEY_POSITION);
+    // Initialize keys
+    Tracker::wKey = Key(LETTER_KEY_SIZE, W_KEY_POSITION, sf::Color::Blue, "W", 50, sf::Color::White, 'W');
+    Tracker::aKey = Key(LETTER_KEY_SIZE, A_KEY_POSITION, sf::Color::Blue, "A", 50, sf::Color::White, 'A');
+    Tracker::sKey = Key(LETTER_KEY_SIZE, S_KEY_POSITION, sf::Color::Blue, "S", 50, sf::Color::White, 'S');
+    Tracker::dKey = Key(LETTER_KEY_SIZE, D_KEY_POSITION, sf::Color::Blue, "D", 50, sf::Color::White, 'D');
+    Tracker::qKey = Key(LETTER_KEY_SIZE, Q_KEY_POSITION, sf::Color::Blue, "Q", 50, sf::Color::White, 'Q');
+    Tracker::eKey = Key(LETTER_KEY_SIZE, E_KEY_POSITION, sf::Color::Blue, "E", 50, sf::Color::White, 'E');
+    Tracker::shiftKey = Key(SHIFT_KEY_SIZE, SHIFT_KEY_POSITION, sf::Color::Blue, "SHIFT", 50, sf::Color::White, VK_SHIFT);
+    Tracker::spaceKey = Key(SPACE_KEY_SIZE, SPACE_KEY_POSITION, sf::Color::Blue, "SPACE", 50, sf::Color::White, VK_SPACE);
+    Tracker::mouseBox = Key(MOUSE_BOX_SIZE, MOUSE_BOX_POSITION, sf::Color::Blue, "", 50, sf::Color::White, -1);
+    Tracker::mouseLeft = Key(MOUSE_KEY_SIZE, LEFT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_LBUTTON);
+    Tracker::mouseRight = Key(MOUSE_KEY_SIZE, RIGHT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_RBUTTON);
 }
 
 void Tracker::Run() {
@@ -177,107 +80,34 @@ void Tracker::Update() {
         }
     }
 
-    // Check current state of keys
-    if(GetAsyncKeyState('W')) {
-        Tracker::upKey.setFillColor(sf::Color::White);
-        Tracker::wText.setFillColor(sf::Color::Blue);
-    } else {
-        Tracker::upKey.setFillColor(sf::Color::Blue);
-        Tracker::wText.setFillColor(sf::Color::White);
-    }
-
-    if(GetAsyncKeyState('A')) {
-        Tracker::leftKey.setFillColor(sf::Color::White);
-        Tracker::aText.setFillColor(sf::Color::Blue);
-    }else {
-        Tracker::leftKey.setFillColor(sf::Color::Blue);
-        Tracker::aText.setFillColor(sf::Color::White);
-    }
-
-    if(GetAsyncKeyState('S')) {
-        Tracker::downKey.setFillColor(sf::Color::White);
-        Tracker::sText.setFillColor(sf::Color::Blue);
-    } else {
-        Tracker::downKey.setFillColor(sf::Color::Blue);
-        Tracker::sText.setFillColor(sf::Color::White);
-    }
-
-    if(GetAsyncKeyState('D')) {
-        Tracker::rightKey.setFillColor(sf::Color::White);
-        Tracker::dText.setFillColor(sf::Color::Blue);
-    } else{
-        Tracker::rightKey.setFillColor(sf::Color::Blue);
-        Tracker::dText.setFillColor(sf::Color::White);
-    }
-
-    if(GetAsyncKeyState('Q')) {
-        Tracker::qKey.setFillColor(sf::Color::White);
-        Tracker::qText.setFillColor(sf::Color::Blue);
-    } else{
-        Tracker::qKey.setFillColor(sf::Color::Blue);
-        Tracker::qText.setFillColor(sf::Color::White);
-    }
-
-    if(GetAsyncKeyState('E')) {
-        Tracker::eKey.setFillColor(sf::Color::White);
-        Tracker::eText.setFillColor(sf::Color::Blue);
-    } else{
-        Tracker::eKey.setFillColor(sf::Color::Blue);
-        Tracker::eText.setFillColor(sf::Color::White);
-    }
-
-    if(GetAsyncKeyState(VK_SPACE)) {
-        Tracker::spaceBar.setFillColor(sf::Color::White);
-        Tracker::spaceText.setFillColor(sf::Color::Blue);
-    } else {
-        Tracker::spaceBar.setFillColor(sf::Color::Blue);
-        Tracker::spaceText.setFillColor(sf::Color::White);
-    }
-
-    if(GetAsyncKeyState(VK_SHIFT)) {
-        Tracker::shiftKey.setFillColor(sf::Color::White);
-        Tracker::shiftText.setFillColor(sf::Color::Blue);
-    } else {
-        Tracker::shiftKey.setFillColor(sf::Color::Blue);
-        Tracker::shiftText.setFillColor(sf::Color::White);
-    }
-
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        Tracker::mouseLeft.setFillColor(sf::Color::White);
-    } else {
-        Tracker::mouseLeft.setFillColor(sf::Color::Blue);
-    }
-
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
-        Tracker::mouseRight.setFillColor(sf::Color::White);
-    } else {
-        Tracker::mouseRight.setFillColor(sf::Color::Blue);
-    }
+    // Update everything on window
+    Tracker::wKey.Update();
+    Tracker::aKey.Update();
+    Tracker::sKey.Update();
+    Tracker::dKey.Update();
+    Tracker::qKey.Update();
+    Tracker::eKey.Update();
+    Tracker::shiftKey.Update();
+    Tracker::spaceKey.Update();
+    Tracker::mouseBox.Update();
+    Tracker::mouseLeft.Update();
+    Tracker::mouseRight.Update();
 }
 
 void Tracker::Draw() {
 
     // Draw everything to window
     Tracker::win.clear();
-    Tracker::testKey.Draw(Tracker::win);
-    // Tracker::win.draw(Tracker::upKey);
-    // Tracker::win.draw(Tracker::downKey);
-    // Tracker::win.draw(Tracker::rightKey);
-    // Tracker::win.draw(Tracker::leftKey);
-    // Tracker::win.draw(Tracker::qKey);
-    // Tracker::win.draw(Tracker::eKey);
-    // Tracker::win.draw(Tracker::spaceBar);
-    // Tracker::win.draw(Tracker::shiftKey);
-    // Tracker::win.draw(Tracker::wText);
-    // Tracker::win.draw(Tracker::sText);
-    // Tracker::win.draw(Tracker::dText);
-    // Tracker::win.draw(Tracker::aText);
-    // Tracker::win.draw(Tracker::qText);
-    // Tracker::win.draw(Tracker::eText);
-    // Tracker::win.draw(Tracker::spaceText);
-    // Tracker::win.draw(Tracker::shiftText);
-    // Tracker::win.draw(Tracker::mouseBox);
-    // Tracker::win.draw(Tracker::mouseLeft);
-    // Tracker::win.draw(Tracker::mouseRight);
+    Tracker::wKey.Draw(Tracker::win);
+    Tracker::aKey.Draw(Tracker::win);
+    Tracker::sKey.Draw(Tracker::win);
+    Tracker::dKey.Draw(Tracker::win);
+    Tracker::qKey.Draw(Tracker::win);
+    Tracker::eKey.Draw(Tracker::win);
+    Tracker::shiftKey.Draw(Tracker::win);
+    Tracker::spaceKey.Draw(Tracker::win);
+    Tracker::mouseBox.Draw(Tracker::win);
+    Tracker::mouseLeft.Draw(Tracker::win);
+    Tracker::mouseRight.Draw(Tracker::win);
     Tracker::win.display(); // Show it
 }
