@@ -7,8 +7,8 @@
 
 Tracker::Tracker() {
 
-    Tracker::Setup();
-    Tracker::Run();
+    this->Setup();
+    this->Run();
 }
 
 void Tracker::Setup() {
@@ -41,73 +41,73 @@ void Tracker::Setup() {
     const sf::Vector2f RIGHT_MOUSE_KEY_POSITION = sf::Vector2f(530, 110);
 
     // Create the window
-    Tracker::win.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Input Tracker");
+    this->win.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Input Tracker");
 
     // Initialize keys
-    Tracker::wKey = Key(LETTER_KEY_SIZE, W_KEY_POSITION, sf::Color::Blue, "W", 50, sf::Color::White, 'W');
-    Tracker::aKey = Key(LETTER_KEY_SIZE, A_KEY_POSITION, sf::Color::Blue, "A", 50, sf::Color::White, 'A');
-    Tracker::sKey = Key(LETTER_KEY_SIZE, S_KEY_POSITION, sf::Color::Blue, "S", 50, sf::Color::White, 'S');
-    Tracker::dKey = Key(LETTER_KEY_SIZE, D_KEY_POSITION, sf::Color::Blue, "D", 50, sf::Color::White, 'D');
-    Tracker::qKey = Key(LETTER_KEY_SIZE, Q_KEY_POSITION, sf::Color::Blue, "Q", 50, sf::Color::White, 'Q');
-    Tracker::eKey = Key(LETTER_KEY_SIZE, E_KEY_POSITION, sf::Color::Blue, "E", 50, sf::Color::White, 'E');
-    Tracker::shiftKey = Key(SHIFT_KEY_SIZE, SHIFT_KEY_POSITION, sf::Color::Blue, "SHIFT", 50, sf::Color::White, VK_SHIFT);
-    Tracker::spaceKey = Key(SPACE_KEY_SIZE, SPACE_KEY_POSITION, sf::Color::Blue, "SPACE", 50, sf::Color::White, VK_SPACE);
-    Tracker::mouseBox = Key(MOUSE_BOX_SIZE, MOUSE_BOX_POSITION, sf::Color::Blue, "", 50, sf::Color::White, -1);
-    Tracker::mouseLeft = Key(MOUSE_KEY_SIZE, LEFT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_LBUTTON);
-    Tracker::mouseRight = Key(MOUSE_KEY_SIZE, RIGHT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_RBUTTON);
+    this->wKey = Key(LETTER_KEY_SIZE, W_KEY_POSITION, sf::Color::Blue, "W", 50, sf::Color::White, 'W');
+    this->aKey = Key(LETTER_KEY_SIZE, A_KEY_POSITION, sf::Color::Blue, "A", 50, sf::Color::White, 'A');
+    this->sKey = Key(LETTER_KEY_SIZE, S_KEY_POSITION, sf::Color::Blue, "S", 50, sf::Color::White, 'S');
+    this->dKey = Key(LETTER_KEY_SIZE, D_KEY_POSITION, sf::Color::Blue, "D", 50, sf::Color::White, 'D');
+    this->qKey = Key(LETTER_KEY_SIZE, Q_KEY_POSITION, sf::Color::Blue, "Q", 50, sf::Color::White, 'Q');
+    this->eKey = Key(LETTER_KEY_SIZE, E_KEY_POSITION, sf::Color::Blue, "E", 50, sf::Color::White, 'E');
+    this->shiftKey = Key(SHIFT_KEY_SIZE, SHIFT_KEY_POSITION, sf::Color::Blue, "SHIFT", 50, sf::Color::White, VK_SHIFT);
+    this->spaceKey = Key(SPACE_KEY_SIZE, SPACE_KEY_POSITION, sf::Color::Blue, "SPACE", 50, sf::Color::White, VK_SPACE);
+    this->mouseBox = Key(MOUSE_BOX_SIZE, MOUSE_BOX_POSITION, sf::Color::Blue, "", 50, sf::Color::White, -1);
+    this->mouseLeft = Key(MOUSE_KEY_SIZE, LEFT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_LBUTTON);
+    this->mouseRight = Key(MOUSE_KEY_SIZE, RIGHT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_RBUTTON);
 }
 
 void Tracker::Run() {
 
-    while(Tracker::win.isOpen()){
+    while(this->win.isOpen()){
 
         // Update everything on screen
-        Tracker::Update();
+        this->Update();
 
         // Draw everything to the window
-        Tracker::Draw();
-    }
+        this->Draw();
+    } 
 }
 
 void Tracker::Update() {
 
     // Check if window is being closed
     sf::Event event;
-    while(Tracker::win.pollEvent(event)){
+    while(this->win.pollEvent(event)){
 
         if(event.type == sf::Event::Closed){
-            Tracker::win.close();
+            this->win.close();
         }
     }
 
     // Update everything on window
-    Tracker::wKey.Update();
-    Tracker::aKey.Update();
-    Tracker::sKey.Update();
-    Tracker::dKey.Update();
-    Tracker::qKey.Update();
-    Tracker::eKey.Update();
-    Tracker::shiftKey.Update();
-    Tracker::spaceKey.Update();
-    Tracker::mouseBox.Update();
-    Tracker::mouseLeft.Update();
-    Tracker::mouseRight.Update();
+    this->wKey.Update();
+    this->aKey.Update();
+    this->sKey.Update();
+    this->dKey.Update();
+    this->qKey.Update();
+    this->eKey.Update();
+    this->shiftKey.Update();
+    this->spaceKey.Update();
+    this->mouseBox.Update();
+    this->mouseLeft.Update();
+    this->mouseRight.Update();
 }
 
 void Tracker::Draw() {
 
     // Draw everything to window
-    Tracker::win.clear();
-    Tracker::wKey.Draw(Tracker::win);
-    Tracker::aKey.Draw(Tracker::win);
-    Tracker::sKey.Draw(Tracker::win);
-    Tracker::dKey.Draw(Tracker::win);
-    Tracker::qKey.Draw(Tracker::win);
-    Tracker::eKey.Draw(Tracker::win);
-    Tracker::shiftKey.Draw(Tracker::win);
-    Tracker::spaceKey.Draw(Tracker::win);
-    Tracker::mouseBox.Draw(Tracker::win);
-    Tracker::mouseLeft.Draw(Tracker::win);
-    Tracker::mouseRight.Draw(Tracker::win);
-    Tracker::win.display(); // Show it
+    this->win.clear();
+    this->wKey.Draw(Tracker::win);
+    this->aKey.Draw(Tracker::win);
+    this->sKey.Draw(Tracker::win);
+    this->dKey.Draw(Tracker::win);
+    this->qKey.Draw(Tracker::win);
+    this->eKey.Draw(Tracker::win);
+    this->shiftKey.Draw(Tracker::win);
+    this->spaceKey.Draw(Tracker::win);
+    this->mouseBox.Draw(Tracker::win);
+    this->mouseLeft.Draw(Tracker::win);
+    this->mouseRight.Draw(Tracker::win);
+    this->win.display(); // Show it
 }
