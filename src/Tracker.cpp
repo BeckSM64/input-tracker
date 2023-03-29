@@ -5,7 +5,19 @@
 #include "Tracker.h"
 #include "Key.h"
 
-Tracker::Tracker() {
+Tracker::Tracker()
+    : wKey(nullptr)
+    , aKey(nullptr)
+    , sKey(nullptr)
+    , dKey(nullptr)
+    , qKey(nullptr)
+    , eKey(nullptr)
+    , shiftKey(nullptr)
+    , spaceKey(nullptr)
+    , mouseBox(nullptr)
+    , mouseLeft(nullptr)
+    , mouseRight(nullptr)
+{
 
     this->Setup();
     this->Run();
@@ -20,6 +32,11 @@ Tracker::~Tracker() {
     delete dKey;
     delete qKey;
     delete eKey;
+    delete shiftKey;
+    delete spaceKey;
+    delete mouseBox;
+    delete mouseLeft;
+    delete mouseRight;
 
     // Ensure nullptr
     wKey = nullptr;
@@ -28,6 +45,11 @@ Tracker::~Tracker() {
     dKey = nullptr;
     qKey = nullptr;
     eKey = nullptr;
+    shiftKey = nullptr;
+    spaceKey = nullptr;
+    mouseBox = nullptr;
+    mouseLeft = nullptr;
+    mouseRight = nullptr;
 }
 
 void Tracker::Setup() {
