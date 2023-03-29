@@ -17,8 +17,6 @@ class Key {
 
     private:
 
-        void Init();
-
         // Key font
         sf::Font font;
 

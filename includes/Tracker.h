@@ -7,6 +7,7 @@ class Tracker {
     public:
 
         Tracker();
+        ~Tracker();
 
     private:
 
@@ -22,15 +23,15 @@ class Tracker {
         sf::Font font;
 
         // Keys
-        Key wKey;
-        Key aKey;
-        Key sKey;
-        Key dKey;
-        Key qKey;
-        Key eKey;
-        Key shiftKey;
-        Key spaceKey;
-        Key mouseBox;
-        Key mouseLeft;
-        Key mouseRight;
+        Key *wKey = nullptr;
+        Key *aKey = nullptr;
+        Key *sKey = nullptr;
+        Key *dKey = nullptr;
+        Key *qKey = nullptr;
+        Key *eKey = nullptr;
+        Key *shiftKey = nullptr;
+        Key *spaceKey = nullptr;
+        Key *mouseBox = nullptr;
+        Key *mouseLeft = nullptr;
+        Key *mouseRight = nullptr;
 };

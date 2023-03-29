@@ -23,27 +23,26 @@ Key::Key(const sf::Vector2f KEY_SIZE,
     this->textColor = textColor;
     this->keyForAsyncCheck = keyForAsyncCheck;
 
-    // Initialize SFML stuff
-    this->Init();
-
-}
-
-void Key::Init() {
-
     // Load font with path relative to output directory of generated executable
-    if(!this->font.loadFromFile("./fonts/arial.ttf")){
+    if(!this->font.loadFromFile("./fonts/arial.ttf")) {
         std::cout << "Error loading font" << std::endl;
     }
 
     // Setup text
-    this->keyText.setString(this->TEXT_STRING);
-    this->keyText.setCharacterSize(50);
+    this->keyText = sf::Text(this->TEXT_STRING, this->font, 50);
     this->keyText.setFillColor(sf::Color::White);
 
     // Setup key
     this->keyShape = sf::RectangleShape(KEY_SIZE);
     this->keyShape.setFillColor(KEY_COLOR);
     this->keyShape.setPosition(KEY_POSITION);
+
+    // Center text on key
+    sf::FloatRect textRect = keyText.getLocalBounds();
+    this->keyText.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    sf::Vector2f newKeyPosition = sf::Vector2f(KEY_POSITION.x + (KEY_SIZE.x/2.0f), KEY_POSITION.y + (KEY_SIZE.y/2.0f));
+    this->keyText.setPosition(newKeyPosition);
+
 }
 
 void Key::Update() {
@@ -59,17 +58,6 @@ void Key::Update() {
 }
 
 void Key::Draw(sf::RenderWindow &win) {
-
-    // TODO: Probably shouldn't do all this every frame but nothing else seems to be working
-    // Not sure why this isn't working when set in Init(), appears to be going out of scope
-    // somehow despite fong being a member variable of the class
-    this->keyText.setFont(this->font);
-
-    // Center text on key
-    sf::FloatRect textRect = keyText.getLocalBounds();
-    keyText.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    sf::Vector2f newKeyPosition = sf::Vector2f(KEY_POSITION.x + (KEY_SIZE.x/2.0f), KEY_POSITION.y + (KEY_SIZE.y/2.0f));
-    this->keyText.setPosition(newKeyPosition);
 
     // Draw to window
     win.draw(this->keyShape);

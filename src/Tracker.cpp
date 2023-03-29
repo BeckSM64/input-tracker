@@ -11,6 +11,25 @@ Tracker::Tracker() {
     this->Run();
 }
 
+Tracker::~Tracker() {
+
+    // Deallocate
+    delete wKey;
+    delete aKey;
+    delete sKey;
+    delete dKey;
+    delete qKey;
+    delete eKey;
+
+    // Ensure nullptr
+    wKey = nullptr;
+    aKey = nullptr;
+    sKey = nullptr;
+    dKey = nullptr;
+    qKey = nullptr;
+    eKey = nullptr;
+}
+
 void Tracker::Setup() {
 
     // Window size constants
@@ -44,17 +63,20 @@ void Tracker::Setup() {
     this->win.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Input Tracker");
 
     // Initialize keys
-    this->wKey = Key(LETTER_KEY_SIZE, W_KEY_POSITION, sf::Color::Blue, "W", 50, sf::Color::White, 'W');
-    this->aKey = Key(LETTER_KEY_SIZE, A_KEY_POSITION, sf::Color::Blue, "A", 50, sf::Color::White, 'A');
-    this->sKey = Key(LETTER_KEY_SIZE, S_KEY_POSITION, sf::Color::Blue, "S", 50, sf::Color::White, 'S');
-    this->dKey = Key(LETTER_KEY_SIZE, D_KEY_POSITION, sf::Color::Blue, "D", 50, sf::Color::White, 'D');
-    this->qKey = Key(LETTER_KEY_SIZE, Q_KEY_POSITION, sf::Color::Blue, "Q", 50, sf::Color::White, 'Q');
-    this->eKey = Key(LETTER_KEY_SIZE, E_KEY_POSITION, sf::Color::Blue, "E", 50, sf::Color::White, 'E');
-    this->shiftKey = Key(SHIFT_KEY_SIZE, SHIFT_KEY_POSITION, sf::Color::Blue, "SHIFT", 50, sf::Color::White, VK_SHIFT);
-    this->spaceKey = Key(SPACE_KEY_SIZE, SPACE_KEY_POSITION, sf::Color::Blue, "SPACE", 50, sf::Color::White, VK_SPACE);
-    this->mouseBox = Key(MOUSE_BOX_SIZE, MOUSE_BOX_POSITION, sf::Color::Blue, "", 50, sf::Color::White, -1);
-    this->mouseLeft = Key(MOUSE_KEY_SIZE, LEFT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_LBUTTON);
-    this->mouseRight = Key(MOUSE_KEY_SIZE, RIGHT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_RBUTTON);
+    // NOTE: Keys need to be newed in order for things to not move around in memory due to issues with
+    // sf::font. It seems something is being moved when these are pushed onto the stack, this fixes it.
+    // There may be another solution but this seems to work.
+    this->wKey = new Key(LETTER_KEY_SIZE, W_KEY_POSITION, sf::Color::Blue, "W", 50, sf::Color::White, 'W');
+    this->aKey = new Key(LETTER_KEY_SIZE, A_KEY_POSITION, sf::Color::Blue, "A", 50, sf::Color::White, 'A');
+    this->sKey = new Key(LETTER_KEY_SIZE, S_KEY_POSITION, sf::Color::Blue, "S", 50, sf::Color::White, 'S');
+    this->dKey = new Key(LETTER_KEY_SIZE, D_KEY_POSITION, sf::Color::Blue, "D", 50, sf::Color::White, 'D');
+    this->qKey = new Key(LETTER_KEY_SIZE, Q_KEY_POSITION, sf::Color::Blue, "Q", 50, sf::Color::White, 'Q');
+    this->eKey = new Key(LETTER_KEY_SIZE, E_KEY_POSITION, sf::Color::Blue, "E", 50, sf::Color::White, 'E');
+    this->shiftKey = new Key(SHIFT_KEY_SIZE, SHIFT_KEY_POSITION, sf::Color::Blue, "SHIFT", 50, sf::Color::White, VK_SHIFT);
+    this->spaceKey = new Key(SPACE_KEY_SIZE, SPACE_KEY_POSITION, sf::Color::Blue, "SPACE", 50, sf::Color::White, VK_SPACE);
+    this->mouseBox = new Key(MOUSE_BOX_SIZE, MOUSE_BOX_POSITION, sf::Color::Blue, "", 50, sf::Color::White, -1);
+    this->mouseLeft = new Key(MOUSE_KEY_SIZE, LEFT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_LBUTTON);
+    this->mouseRight = new Key(MOUSE_KEY_SIZE, RIGHT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_RBUTTON);
 }
 
 void Tracker::Run() {
@@ -81,33 +103,33 @@ void Tracker::Update() {
     }
 
     // Update everything on window
-    this->wKey.Update();
-    this->aKey.Update();
-    this->sKey.Update();
-    this->dKey.Update();
-    this->qKey.Update();
-    this->eKey.Update();
-    this->shiftKey.Update();
-    this->spaceKey.Update();
-    this->mouseBox.Update();
-    this->mouseLeft.Update();
-    this->mouseRight.Update();
+    this->wKey->Update();
+    this->aKey->Update();
+    this->sKey->Update();
+    this->dKey->Update();
+    this->qKey->Update();
+    this->eKey->Update();
+    this->shiftKey->Update();
+    this->spaceKey->Update();
+    this->mouseBox->Update();
+    this->mouseLeft->Update();
+    this->mouseRight->Update();
 }
 
 void Tracker::Draw() {
 
     // Draw everything to window
     this->win.clear();
-    this->wKey.Draw(Tracker::win);
-    this->aKey.Draw(Tracker::win);
-    this->sKey.Draw(Tracker::win);
-    this->dKey.Draw(Tracker::win);
-    this->qKey.Draw(Tracker::win);
-    this->eKey.Draw(Tracker::win);
-    this->shiftKey.Draw(Tracker::win);
-    this->spaceKey.Draw(Tracker::win);
-    this->mouseBox.Draw(Tracker::win);
-    this->mouseLeft.Draw(Tracker::win);
-    this->mouseRight.Draw(Tracker::win);
+    this->wKey->Draw(Tracker::win);
+    this->aKey->Draw(Tracker::win);
+    this->sKey->Draw(Tracker::win);
+    this->dKey->Draw(Tracker::win);
+    this->qKey->Draw(Tracker::win);
+    this->eKey->Draw(Tracker::win);
+    this->shiftKey->Draw(Tracker::win);
+    this->spaceKey->Draw(Tracker::win);
+    this->mouseBox->Draw(Tracker::win);
+    this->mouseLeft->Draw(Tracker::win);
+    this->mouseRight->Draw(Tracker::win);
     this->win.display(); // Show it
 }
