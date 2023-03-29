@@ -29,7 +29,7 @@ Key::Key(const sf::Vector2f KEY_SIZE,
     }
 
     // Setup text
-    this->keyText = sf::Text(this->TEXT_STRING, this->font, 50);
+    this->keyText = sf::Text(this->TEXT_STRING, this->font, this->TEXT_SIZE);
     this->keyText.setFillColor(sf::Color::White);
 
     // Setup key
