@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Tracker.h"
-// #include "Key.h" // TODO: PRAGMA ONCE
+#include "Key.h"
 
 Tracker::Tracker() {
 
