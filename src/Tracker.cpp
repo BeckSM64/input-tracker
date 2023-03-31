@@ -1,9 +1,10 @@
 #include <iostream>
-#include <windows.h>
 #include <SFML/Graphics.hpp>
 
 #include "Tracker.h"
 #include "Key.h"
+#include "KeyboardKey.h"
+#include "MouseKey.h"
 
 Tracker::Tracker()
     : wKey(nullptr)
@@ -18,7 +19,6 @@ Tracker::Tracker()
     , mouseLeft(nullptr)
     , mouseRight(nullptr)
 {
-
     this->Setup();
     this->Run();
 }
@@ -88,38 +88,38 @@ void Tracker::Setup() {
     // NOTE: Keys need to be newed in order for things to not move around in memory due to issues with
     // sf::font. It seems something is being moved when these are pushed onto the stack, this fixes it.
     // There may be another solution but this seems to work.
-    this->wKey = new Key(LETTER_KEY_SIZE, W_KEY_POSITION, sf::Color::Blue, "W", 50, sf::Color::White, 'W');
-    this->aKey = new Key(LETTER_KEY_SIZE, A_KEY_POSITION, sf::Color::Blue, "A", 50, sf::Color::White, 'A');
-    this->sKey = new Key(LETTER_KEY_SIZE, S_KEY_POSITION, sf::Color::Blue, "S", 50, sf::Color::White, 'S');
-    this->dKey = new Key(LETTER_KEY_SIZE, D_KEY_POSITION, sf::Color::Blue, "D", 50, sf::Color::White, 'D');
-    this->qKey = new Key(LETTER_KEY_SIZE, Q_KEY_POSITION, sf::Color::Blue, "Q", 50, sf::Color::White, 'Q');
-    this->eKey = new Key(LETTER_KEY_SIZE, E_KEY_POSITION, sf::Color::Blue, "E", 50, sf::Color::White, 'E');
-    this->shiftKey = new Key(SHIFT_KEY_SIZE, SHIFT_KEY_POSITION, sf::Color::Blue, "SHIFT", 50, sf::Color::White, VK_SHIFT);
-    this->spaceKey = new Key(SPACE_KEY_SIZE, SPACE_KEY_POSITION, sf::Color::Blue, "SPACE", 50, sf::Color::White, VK_SPACE);
-    this->mouseBox = new Key(MOUSE_BOX_SIZE, MOUSE_BOX_POSITION, sf::Color::Blue, "", 50, sf::Color::White, -1);
-    this->mouseLeft = new Key(MOUSE_KEY_SIZE, LEFT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_LBUTTON);
-    this->mouseRight = new Key(MOUSE_KEY_SIZE, RIGHT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, VK_RBUTTON);
+    this->wKey = new KeyboardKey(LETTER_KEY_SIZE, W_KEY_POSITION, sf::Color::Blue, "W", 50, sf::Color::White, sf::Keyboard::Key::W);
+    this->aKey = new KeyboardKey(LETTER_KEY_SIZE, A_KEY_POSITION, sf::Color::Blue, "A", 50, sf::Color::White, sf::Keyboard::Key::A);
+    this->sKey = new KeyboardKey(LETTER_KEY_SIZE, S_KEY_POSITION, sf::Color::Blue, "S", 50, sf::Color::White, sf::Keyboard::Key::S);
+    this->dKey = new KeyboardKey(LETTER_KEY_SIZE, D_KEY_POSITION, sf::Color::Blue, "D", 50, sf::Color::White, sf::Keyboard::Key::D);
+    this->qKey = new KeyboardKey(LETTER_KEY_SIZE, Q_KEY_POSITION, sf::Color::Blue, "Q", 50, sf::Color::White, sf::Keyboard::Key::Q);
+    this->eKey = new KeyboardKey(LETTER_KEY_SIZE, E_KEY_POSITION, sf::Color::Blue, "E", 50, sf::Color::White, sf::Keyboard::Key::E);
+    this->shiftKey = new KeyboardKey(SHIFT_KEY_SIZE, SHIFT_KEY_POSITION, sf::Color::Blue, "SHIFT", 50, sf::Color::White, sf::Keyboard::Key::LShift);
+    this->spaceKey = new KeyboardKey(SPACE_KEY_SIZE, SPACE_KEY_POSITION, sf::Color::Blue, "SPACE", 50, sf::Color::White, sf::Keyboard::Key::Space);
+    this->mouseBox = new Key(MOUSE_BOX_SIZE, MOUSE_BOX_POSITION, sf::Color::Blue, "", 50, sf::Color::White);
+    this->mouseLeft = new MouseKey(MOUSE_KEY_SIZE, LEFT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, sf::Mouse::Button::Left);
+    this->mouseRight = new MouseKey(MOUSE_KEY_SIZE, RIGHT_MOUSE_KEY_POSITION, sf::Color::Blue, "", 50, sf::Color::White, sf::Mouse::Button::Right);
 }
 
 void Tracker::Run() {
 
-    while(this->win.isOpen()){
+    while(this->win.isOpen()) {
 
         // Update everything on screen
         this->Update();
 
         // Draw everything to the window
         this->Draw();
-    } 
+    }
 }
 
 void Tracker::Update() {
 
-    // Check if window is being closed
     sf::Event event;
-    while(this->win.pollEvent(event)){
+    while(this->win.pollEvent(event)) {
 
-        if(event.type == sf::Event::Closed){
+        // Check if window is being closed
+        if(event.type == sf::Event::Closed) {
             this->win.close();
         }
     }
@@ -133,7 +133,6 @@ void Tracker::Update() {
     this->eKey->Update();
     this->shiftKey->Update();
     this->spaceKey->Update();
-    this->mouseBox->Update();
     this->mouseLeft->Update();
     this->mouseRight->Update();
 }

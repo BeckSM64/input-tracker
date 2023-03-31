@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 
 #include "Key.h"
+#include "KeyboardKey.h"
+#include "MouseKey.h"
 
 class Tracker {
 
@@ -23,15 +25,15 @@ class Tracker {
         sf::Font font;
 
         // Keys
-        Key *wKey;
-        Key *aKey;
-        Key *sKey;
-        Key *dKey;
-        Key *qKey;
-        Key *eKey;
-        Key *shiftKey;
-        Key *spaceKey;
+        KeyboardKey *wKey;
+        KeyboardKey *aKey;
+        KeyboardKey *sKey;
+        KeyboardKey *dKey;
+        KeyboardKey *qKey;
+        KeyboardKey *eKey;
+        KeyboardKey *shiftKey;
+        KeyboardKey *spaceKey;
         Key *mouseBox;
-        Key *mouseLeft;
-        Key *mouseRight;
+        MouseKey *mouseLeft;
+        MouseKey *mouseRight;
 };

@@ -12,12 +12,10 @@ class Key {
             const sf::Color KEY_COLOR,
             const std::string TEXT_STRING,
             const int TEXT_SIZE,
-            sf::Color textColor,
-            int keyForAsyncCheck);
-        void Update();
+            sf::Color textColor);
         void Draw(sf::RenderWindow &win);
 
-    private:
+    protected:
 
         // Key font
         sf::Font font;
@@ -34,7 +32,4 @@ class Key {
         std::string TEXT_STRING;
         int TEXT_SIZE;
         sf::Color textColor;
-
-        int keyForAsyncCheck;
-
 };

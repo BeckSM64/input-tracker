@@ -1,5 +1,4 @@
 #include <iostream>
-#include <windows.h>
 
 #include "Key.h"
 
@@ -12,8 +11,7 @@ Key::Key(const sf::Vector2f KEY_SIZE,
          const sf::Color KEY_COLOR,
          const std::string TEXT_STRING,
          const int TEXT_SIZE,
-         sf::Color textColor,
-         int keyForAsyncCheck) {
+         sf::Color textColor) {
 
     this->KEY_SIZE = KEY_SIZE;
     this->KEY_POSITION = KEY_POSITION;
@@ -21,7 +19,6 @@ Key::Key(const sf::Vector2f KEY_SIZE,
     this->TEXT_STRING = TEXT_STRING;
     this->TEXT_SIZE = TEXT_SIZE;
     this->textColor = textColor;
-    this->keyForAsyncCheck = keyForAsyncCheck;
 
     // Load font with path relative to output directory of generated executable
     if(!this->font.loadFromFile("./fonts/arial.ttf")) {
@@ -43,18 +40,6 @@ Key::Key(const sf::Vector2f KEY_SIZE,
     sf::Vector2f newKeyPosition = sf::Vector2f(KEY_POSITION.x + (KEY_SIZE.x/2.0f), KEY_POSITION.y + (KEY_SIZE.y/2.0f));
     this->keyText.setPosition(newKeyPosition);
 
-}
-
-void Key::Update() {
-
-    // Change key color depending on input
-    if(GetAsyncKeyState(this->keyForAsyncCheck)) {
-        this->keyShape.setFillColor(sf::Color::White);
-        this->keyText.setFillColor(sf::Color::Blue);
-    } else {
-        this->keyShape.setFillColor(sf::Color::Blue);
-        this->keyText.setFillColor(sf::Color::White);
-    }
 }
 
 void Key::Draw(sf::RenderWindow &win) {
