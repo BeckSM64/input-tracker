@@ -21,7 +21,7 @@ Key::Key(const sf::Vector2f KEY_SIZE,
     this->textColor = textColor;
 
     // Load font with path relative to output directory of generated executable
-    if(!this->font.loadFromFile("./fonts/arial.ttf")) {
+    if(!this->font.loadFromFile("./fonts/Arial.ttf")) {
         std::cout << "Error loading font" << std::endl;
     }
 
